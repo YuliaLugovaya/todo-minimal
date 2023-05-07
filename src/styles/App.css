@@ -1,0 +1,55 @@
+html,
+body {
+  height: 100%;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.header {
+  margin-bottom: 64px;
+}
+
+.main {
+  flex: 1 1 auto;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.title {
+  margin: 5vh 0;
+  text-align: center;
+}
+
+.add__field {
+  display: flex;
+}
+
+.task {
+  padding: 3vh 0;
+}
+
+.subtitle {
+  margin-bottom: 35px;
+  padding-bottom: 10px;
+  border-bottom: 3px solid black;
+}
+
+.btn-primary {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: #1976d2;
+  --bs-btn-border-color: #1976d2;
+  --bs-btn-hover-bg: #125699;
+  --bs-btn-hover-border-color: #125699;
+  --bs-btn-active-bg: #125699;
+  --bs-btn-active-border-color: #125699;
+}
+
+.form-check-input:checked + .form-check-label {
+  text-decoration: line-through;
+}
