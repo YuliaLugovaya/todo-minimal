@@ -6,34 +6,38 @@ import Form from '../Form/Form'
 function Main(props) {
 
   const [list, setList] = useState([]);
-  const [text, setText] = useState('');
+  let [text, setText] = useState('');
+  const [checked, setChecked] = useState(false);
 
   function handleSubmit(event) {
     event.preventDefault();
     const post = {
       text,
-      id: Date.now()
+      id: Date.now(),
+      status: false
     }
     setList((prev) => [...prev, post])
     setText('')
   }
 
-  function changeStatus() {
-    const checkbox = document.getElementById('exampleCheck1');
-    const checkboxText = document.querySelector('.form-check-label');
-    if (checkbox.checked === true){
-      checkboxText.style.textDecoration = "line-through";
-    } else {
-      checkboxText.style.textDecoration = "none";
-    }
+  function changeStatus(id) {
+    setChecked(!checked);
+    setList(
+      list.map((el) => {
+        if (el.id === id) {
+          el.status = !el.status;
+        }
+        return el;
+      })
+    );
   }
 
   return (
     <>
       <main className='main'>
         <h1 className='title'>Create your personal ToDo-list</h1>
-        <Form text={text} setText={setText} handleSubmit={handleSubmit}/>
-        <TaskList list={list} changeStatus={changeStatus}/>
+        <Form text={text} setText={setText} handleSubmit={handleSubmit} />
+        <TaskList list={list} changeStatus={changeStatus} checked={checked} />
       </main>
     </>
   );
