@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Task({ id, text, changeStatus, checked, status }) {
+function Task({ id, text, changeStatus, status }) {
   return (
     <div className="mb-3 form-check">
       <input

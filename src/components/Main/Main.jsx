@@ -6,7 +6,7 @@ import Form from '../Form/Form'
 function Main(props) {
 
   const [list, setList] = useState([]);
-  let [text, setText] = useState('');
+  const [text, setText] = useState('');
   const [checked, setChecked] = useState(false);
 
   function handleSubmit(event) {
