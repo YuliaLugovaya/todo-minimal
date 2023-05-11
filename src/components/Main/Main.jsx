@@ -18,12 +18,22 @@ function Main(props) {
     setText('')
   }
 
+  function changeStatus() {
+    const checkbox = document.getElementById('exampleCheck1');
+    const checkboxText = document.querySelector('.form-check-label');
+    if (checkbox.checked === true){
+      checkboxText.style.textDecoration = "line-through";
+    } else {
+      checkboxText.style.textDecoration = "none";
+    }
+  }
+
   return (
     <>
       <main className='main'>
         <h1 className='title'>Create your personal ToDo-list</h1>
         <Form text={text} setText={setText} handleSubmit={handleSubmit}/>
-        <TaskList list={list}/>
+        <TaskList list={list} changeStatus={changeStatus}/>
       </main>
     </>
   );
