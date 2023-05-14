@@ -1,11 +1,14 @@
 import { useState } from 'react';
+// import { useEffect } from 'react';
 import React from 'react';
 import TaskList from '../TaskList/TaskList'
 import Form from '../Form/Form'
+import { useLocalStorage } from '../../hooks/useLS'
+
 
 function Main(props) {
 
-  const [list, setList] = useState([]);
+  const [list, setList] = useLocalStorage('task', []);
   const [text, setText] = useState('');
   const [checked, setChecked] = useState(false);
 
@@ -16,8 +19,8 @@ function Main(props) {
       id: Date.now(),
       status: false
     }
-    setList((prev) => [...prev, post])
-    setText('')
+    setList((prev) => [...prev, post]);
+    setText('');
   }
 
   function changeStatus(id) {
@@ -32,12 +35,16 @@ function Main(props) {
     );
   }
 
+  function removeTask(id) {
+    setList(list.filter((el) => id !== el.id));
+  }
+
   return (
     <>
       <main className='main'>
         <h1 className='title'>Create your personal ToDo-list</h1>
         <Form text={text} setText={setText} handleSubmit={handleSubmit} />
-        <TaskList list={list} changeStatus={changeStatus} checked={checked} />
+        <TaskList list={list} changeStatus={changeStatus} checked={checked} removeTask={removeTask}/>
       </main>
     </>
   );

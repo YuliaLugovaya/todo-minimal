@@ -48,8 +48,24 @@ body {
   --bs-btn-hover-border-color: #125699;
   --bs-btn-active-bg: #125699;
   --bs-btn-active-border-color: #125699;
+  margin-left: 10px;
 }
 
-/* .form-check-input:checked + .form-check-label {
+.complited {
   text-decoration: line-through;
-} */
+}
+
+.form-check {
+  display: grid;
+  grid-template-columns: 10px 5fr 5fr;
+  grid-template-rows: 1fr;
+  align-items: center;
+}
+
+.form-check-label {
+  justify-self: start;
+}
+
+.form-check-btn {
+  justify-self: end;
+}
