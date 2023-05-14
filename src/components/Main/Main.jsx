@@ -8,7 +8,7 @@ import { useLocalStorage } from '../../hooks/useLS'
 
 function Main(props) {
 
-  const [list, setList] = useLocalStorage('task', []);
+  const [list, setList] = useLocalStorage('tasks', []);
   const [text, setText] = useState('');
   const [checked, setChecked] = useState(false);
 

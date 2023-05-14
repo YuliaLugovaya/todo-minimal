@@ -8,8 +8,6 @@ function Form({text, setText, handleSubmit}) {
             <label htmlFor="exampleInput" className="form-label"></label>
             <input
               className="form-control"
-              id="exampleInput"
-              aria-describedby="inputHelp"
               placeholder="Write task"
               onChange={(event) => setText(event.target.value)}
               value={text}

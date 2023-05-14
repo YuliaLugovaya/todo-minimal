@@ -1,16 +1,3 @@
-// import { useEffect, useState } from "react"
-
-// function getSavedValue(key, defaultValue) {
-//   const savedValue = localStorage.getItem(key)
-//   return savedValue || defaultValue
-// }
-
-// export function useLocalStorage(key, initialValue) {
-//   const [value, setValue] = useState(getSavedValue(key, initialValue))
-//   useEffect(() => localStorage.setItem(key, value), [key, value])
-//   return [value, setValue]
-// }
-
 import { useState, useEffect } from "react";
 
 export function useLocalStorage(key, defaultValue) {
