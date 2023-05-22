@@ -1,9 +1,27 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { globalContext } from '../../contexts/globalContext';
 
 function Form() {
 
-  const { text, setText, handleSubmit } = useContext(globalContext);
+  const { dispatch } = useContext(globalContext);
+
+  const [text, setText] = useState('');
+
+  function handleSubmit(event) {
+    event.preventDefault();
+
+    if (text) {
+      dispatch({
+        type: 'ADD_TASK',
+        payload: {
+          text,
+          id: Date.now(),
+          status: false
+        }
+      })
+    }
+    setText('');
+  }
 
   return (
     <section className='task add'>
