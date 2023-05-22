@@ -18,7 +18,9 @@ function Main(props) {
       id: Date.now(),
       status: false
     }
-    setList((prev) => [...prev, post]);
+    if(text) {
+      setList((prev) => [...prev, post]);
+    }
     setText('');
   }
 
