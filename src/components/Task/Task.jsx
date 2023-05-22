@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { globalContext } from '../../contexts/globalContext';
 
-function Task({ id, text, changeStatus, status, removeTask }) {
+function Task({ id, text, status }) {
+
+  const { changeStatus, removeTask } = useContext(globalContext);
+
   return (
     <div className="mb-3 form-check">
       <input
