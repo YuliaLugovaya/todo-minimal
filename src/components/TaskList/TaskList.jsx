@@ -4,12 +4,12 @@ import { globalContext } from '../../contexts/globalContext';
 
 function TaskList() {
 
-  const { list } = useContext(globalContext);
+  const { state } = useContext(globalContext);
 
   return (
     <section className='task todo'>
       <h2 className='subtitle'>ToDo</h2>
-      {list.map((post) => (
+      {state.list.map((post) => (
         <div key={post.id}>
           <Task id={post.id} text={post.text} status={post.status} />
         </div>

@@ -1,9 +1,27 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { globalContext } from '../../contexts/globalContext';
 
 function Task({ id, text, status }) {
 
-  const { changeStatus, removeTask } = useContext(globalContext);
+  const { dispatch } = useContext(globalContext);
+
+  const [checked, setChecked] = useState(false);
+
+  function changeStatus(id) {
+    setChecked(!checked);
+    dispatch({
+      type: 'CHANGE_STATUS',
+      payload: id,
+    })
+  }
+
+  console.log(status)
+  function removeTask(id) {
+    dispatch({
+      type: 'DELETE_TASK',
+      payload: id,
+    })
+  }
 
   return (
     <div className="mb-3 form-check">
