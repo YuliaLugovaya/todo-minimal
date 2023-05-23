@@ -15,7 +15,7 @@ body {
 
 .main {
   flex: 1 1 auto;
-  max-width: 1200px;
+  max-width: 700px;
   margin: 0 auto;
   padding-left: 2rem;
   padding-right: 2rem;
@@ -27,7 +27,10 @@ body {
 }
 
 .add__field {
-  display: flex;
+  display: grid;
+  grid-template-columns: 0 4fr 1fr;
+  grid-template-rows: 1fr;
+  align-items: center;
 }
 
 .task {
@@ -57,13 +60,14 @@ body {
 
 .form-check {
   display: grid;
-  grid-template-columns: 10px 5fr 5fr;
+  grid-template-columns: 19px 4fr 1fr 1fr;
   grid-template-rows: 1fr;
   align-items: center;
 }
 
 .form-check-label {
   justify-self: start;
+  word-wrap: break-word;
 }
 
 .form-check-btn {

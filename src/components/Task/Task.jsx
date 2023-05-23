@@ -6,6 +6,8 @@ function Task({ id, text, status }) {
   const { dispatch } = useContext(globalContext);
 
   const [checked, setChecked] = useState(false);
+  const [edit, setEdit] = useState(null);
+  const [value, setValue] = useState('');
 
   function changeStatus(id) {
     setChecked(!checked);
@@ -15,7 +17,6 @@ function Task({ id, text, status }) {
     })
   }
 
-  console.log(status)
   function removeTask(id) {
     dispatch({
       type: 'DELETE_TASK',
@@ -23,22 +24,52 @@ function Task({ id, text, status }) {
     })
   }
 
+  function editTask(id, text) {
+    setEdit(id);
+    setValue(text);
+  }
+
+  function handleSubmitEdit(id) {
+    dispatch({
+      type: 'EDIT_TASK',
+      payload: {
+        id,
+        value,
+      }
+    })
+    setEdit(null)
+  }
+
   return (
-    <div className="mb-3 form-check">
-      <input
-        type="checkbox"
-        className="form-check-input"
-        checked={status}
-        onChange={() => changeStatus(id)} />
-      <label
-        className={status ? "form-check-label complited" : "form-check-label"}
-        htmlFor="exampleCheck1">
-        {text}
-      </label>
-      <button className="btn btn-primary form-check-btn" onClick={() => removeTask(id)}>
-        Delete
-      </button>
-    </div>
+    <>
+      {edit === id ? (
+        <form className='mb-3 add__field' onSubmit={() => handleSubmitEdit(id)}>
+          <label htmlFor="exampleInput" className="form-label"></label>
+          <input
+            className="form-control"
+            onChange={(event) => setValue(event.target.value)}
+            value={value}
+          />
+          <button type="submit" className="btn btn-primary">Update</button>
+        </form>
+      ) : (
+        <div className="mb-3 form-check">
+          <input
+            type="checkbox"
+            className="form-check-input"
+            checked={status}
+            onChange={() => changeStatus(id)} /><label
+              className={status ? "form-check-label complited" : "form-check-label"}
+              htmlFor="exampleCheck1">
+            {text}
+          </label><button className="btn btn-primary form-check-btn" onClick={() => editTask(id, text)}>
+            Edit
+          </button><button className="btn btn-primary form-check-btn" onClick={() => removeTask(id)}>
+            Delete
+          </button>
+        </div>
+      )}
+    </>
   );
 }
 

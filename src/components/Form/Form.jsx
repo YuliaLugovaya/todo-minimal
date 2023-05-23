@@ -16,7 +16,8 @@ function Form() {
         payload: {
           text,
           id: Date.now(),
-          status: false
+          status: false,
+          isEditing: false,
         }
       })
     }

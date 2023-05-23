@@ -4,7 +4,6 @@ import Form from '../Form/Form'
 
 
 function Main(props) {
-
   return (
     <>
       <main className='main'>

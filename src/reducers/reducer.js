@@ -26,6 +26,17 @@ export function reducer(state, action) {
         })
       }
     }
+    case 'EDIT_TASK': {
+      const editTask = action.payload;
+      return {
+        ...state, list: state.list.map((el) => {
+          if (el.id === editTask.id) {
+            el.text = editTask.value;
+          }
+          return el;
+        })
+      }
+    }
     default: {
       return state;
     }
