@@ -27,11 +27,11 @@ export function reducer(state, action) {
       }
     }
     case 'EDIT_TASK': {
-      const editTask = action.payload;
+      const { id, value } = action.payload;
       return {
         ...state, list: state.list.map((el) => {
-          if (el.id === editTask.id) {
-            el.text = editTask.value;
+          if (el.id === id) {
+            return {...el, text: value};
           }
           return el;
         })
