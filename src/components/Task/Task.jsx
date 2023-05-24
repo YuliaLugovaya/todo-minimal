@@ -29,7 +29,8 @@ function Task({ id, text, status }) {
     setValue(text);
   }
 
-  function handleSubmitEdit(id) {
+  function handleSubmitEdit(event) {
+    event.preventDefault();
     dispatch({
       type: 'EDIT_TASK',
       payload: {
@@ -43,7 +44,7 @@ function Task({ id, text, status }) {
   return (
     <>
       {edit === id ? (
-        <form className='mb-3 add__field' onSubmit={() => handleSubmitEdit(id)}>
+        <form className='mb-3 add__field' onSubmit={handleSubmitEdit}>
           <label htmlFor="exampleInput" className="form-label"></label>
           <input
             className="form-control"
@@ -58,13 +59,16 @@ function Task({ id, text, status }) {
             type="checkbox"
             className="form-check-input"
             checked={status}
-            onChange={() => changeStatus(id)} /><label
+            onChange={() => changeStatus(id)} />
+            <label
               className={status ? "form-check-label complited" : "form-check-label"}
               htmlFor="exampleCheck1">
             {text}
-          </label><button className="btn btn-primary form-check-btn" onClick={() => editTask(id, text)}>
+          </label>
+          <button className="btn btn-primary form-check-btn" onClick={() => editTask(id, text)}>
             Edit
-          </button><button className="btn btn-primary form-check-btn" onClick={() => removeTask(id)}>
+          </button>
+          <button className="btn btn-primary form-check-btn" onClick={() => removeTask(id)}>
             Delete
           </button>
         </div>
