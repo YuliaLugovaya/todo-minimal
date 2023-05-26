@@ -17,7 +17,6 @@ function Form() {
           text,
           id: Date.now(),
           status: false,
-          isEditing: false,
         }
       })
     }

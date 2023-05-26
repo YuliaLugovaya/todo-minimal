@@ -1,9 +1,9 @@
-export const initialState = {
-  list: []
-}
+// export const initialState = {
+//   list: []
+// }
 
-export const initializer = (initialValue = initialState) =>
-  JSON.parse(localStorage.getItem("tasks")) || initialValue;
+// // export const initializer = (initialValue = initialState) =>
+// //   JSON.parse(localStorage.getItem("tasks")) || initialValue;
 
 export function reducer(state, action) {
   switch (action.type) {
@@ -31,7 +31,7 @@ export function reducer(state, action) {
       return {
         ...state, list: state.list.map((el) => {
           if (el.id === id) {
-            return {...el, text: value};
+            return { ...el, text: value };
           }
           return el;
         })
