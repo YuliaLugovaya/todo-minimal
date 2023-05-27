@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { changeStatusAC } from '../../store/actions/mainActions';
+import { deleteTaskAC } from '../../store/actions/mainActions';
+import { editTaskAC } from '../../store/actions/mainActions';
 
 function Task({ id, text, status }) {
 
@@ -10,17 +13,11 @@ function Task({ id, text, status }) {
 
   function changeStatus(id) {
     setChecked(!checked);
-    dispatch({
-      type: 'CHANGE_STATUS',
-      payload: id,
-    })
+    dispatch(changeStatusAC(id));
   }
 
   function removeTask(id) {
-    dispatch({
-      type: 'DELETE_TASK',
-      payload: id,
-    })
+    dispatch(deleteTaskAC(id));
   }
 
   function editTask(id, text) {
@@ -30,13 +27,10 @@ function Task({ id, text, status }) {
 
   function handleSubmitEdit(event) {
     event.preventDefault();
-    dispatch({
-      type: 'EDIT_TASK',
-      payload: {
-        id,
-        value,
-      }
-    })
+    dispatch(editTaskAC({
+      id,
+      value,
+    }));
     setEdit(null)
   }
 
@@ -59,9 +53,9 @@ function Task({ id, text, status }) {
             className="form-check-input"
             checked={status}
             onChange={() => changeStatus(id)} />
-            <label
-              className={status ? "form-check-label complited" : "form-check-label"}
-              htmlFor="exampleCheck1">
+          <label
+            className={status ? "form-check-label complited" : "form-check-label"}
+            htmlFor="exampleCheck1">
             {text}
           </label>
           <button className="btn btn-primary form-check-btn" onClick={() => editTask(id, text)}>

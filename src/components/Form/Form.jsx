@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { addTaskAC } from '../../store/actions/mainActions';
 
 function Form() {
 
@@ -10,14 +11,11 @@ function Form() {
     event.preventDefault();
 
     if (text) {
-      dispatch({
-        type: 'ADD_TASK',
-        payload: {
-          text,
-          id: Date.now(),
-          status: false,
-        }
-      })
+      dispatch(addTaskAC({
+        text,
+        id: Date.now(),
+        status: false,
+      }));
     }
     setText('');
   }
