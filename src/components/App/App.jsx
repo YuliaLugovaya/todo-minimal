@@ -2,25 +2,18 @@ import '../../styles/App.css';
 import Header from '../Header/Header'
 import Main from '../Main/Main'
 import Footer from '../Footer/Footer'
-import { globalContext as GlobalContext } from '../../contexts/globalContext';
 import React from 'react';
-import { useLocalStorage } from '../../hooks/useLS';
-
+import { Provider } from 'react-redux';
+import store from '../../store/store';
 
 function App() {
-
-  const initialState = {
-    list: []
-  }
-
-  const [state, dispatch] = useLocalStorage('tasks', initialState);
 
   return (
     <div className="App wrapper">
       <Header />
-      <GlobalContext.Provider value={{ state, dispatch }}>
+      <Provider store={store}>
         <Main />
-      </GlobalContext.Provider>
+      </Provider>
       <Footer />
     </div>
   );

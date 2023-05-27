@@ -1,15 +1,15 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import Task from '../Task/Task';
-import { globalContext } from '../../contexts/globalContext';
+import { useSelector } from 'react-redux';
 
 function TaskList() {
 
-  const { state } = useContext(globalContext);
+  const { list } = useSelector((store) => store.mainStore);
 
   return (
     <section className='task todo'>
       <h2 className='subtitle'>ToDo</h2>
-      {state.list.map((post) => (
+      {list && list.map((post) => (
         <div key={post.id}>
           <Task id={post.id} text={post.text} status={post.status} />
         </div>

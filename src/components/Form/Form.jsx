@@ -1,11 +1,10 @@
-import React, { useContext, useState } from 'react';
-import { globalContext } from '../../contexts/globalContext';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 function Form() {
 
-  const { dispatch } = useContext(globalContext);
-
   const [text, setText] = useState('');
+  const dispatch = useDispatch();
 
   function handleSubmit(event) {
     event.preventDefault();

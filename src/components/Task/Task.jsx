@@ -1,13 +1,12 @@
-import React, { useContext, useState } from 'react';
-import { globalContext } from '../../contexts/globalContext';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 function Task({ id, text, status }) {
-
-  const { dispatch } = useContext(globalContext);
 
   const [checked, setChecked] = useState(false);
   const [edit, setEdit] = useState(null);
   const [value, setValue] = useState('');
+  const dispatch = useDispatch();
 
   function changeStatus(id) {
     setChecked(!checked);

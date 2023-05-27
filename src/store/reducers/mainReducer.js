@@ -1,4 +1,8 @@
-export function reducer(state, action) {
+const initialState = {
+  list: []
+}
+
+export function mainReducer(state = initialState, action) {
   switch (action.type) {
     case 'ADD_TASK': {
       const newTask = action.payload;
@@ -13,7 +17,7 @@ export function reducer(state, action) {
       return {
         ...state, list: state.list.map((el) => {
           if (el.id === changeStatus) {
-            el.status = !el.status;
+            return { ...el, status: !el.status };
           }
           return el;
         })
